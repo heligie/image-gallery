@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsplash image gallery</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="favicon.ico">
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__container">
+        <span class="header__logo">
+          <img class="header__img" width="45" height="45" src="./assets/svg/logo.svg" alt="Logo.">
+        </span>
+        <div class="header__search">
+          <input class="header__search-input" type="text" placeholder="Search images by keyword" autocomplete="off" autofocus>
+          <button class="header__search-reset" type="reset">
+            <span class="visually-hidden">Reset the search field.</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="main is-loading">
+      <span class="loader"></span>
+      <div class="error">
+        <span class="error__title">Error <span class="error__status"></span></span>
+        <span class="error__description">Oops... Something went wrong. Please try again or come back later.</span>
+        <button class="error__reload" type="button" aria-label="Reload a page."></button>
+      </div>
+      <section class="gallery">
+        <div class="gallery__intro">
+          <div class="gallery__headline">
+            <h1 class="gallery__title">Unsplash API</h1>
+            <p class="gallery__description">Search using the most powerful image search API in the world, powered by tens of millions of community generated tags and advanced image recognition.</p>
+            <p class="gallery__text">* This application is in demo mode and rate-limited to 50 requests per hour.</p>
+          </div>
+          <div class="gallery__bottom">
+            <div class="gallery__stats">
+              <h2 class="gallery__stats-title">Month</h2>
+              <span>The overall Unsplash stats for the past 30 days.</span>
+                <ul class="gallery__stats-list">
+                  <li class="gallery__stats-item">
+                    downloads
+                    <span class="gallery__stats-count gallery__stats-count--downloads">0</span>
+                  </li>
+                  <li class="gallery__stats-item">
+                    views
+                    <span class="gallery__stats-count gallery__stats-count--views">0</span>
+                  </li>
+                  <li class="gallery__stats-item">
+                    new developers
+                    <span class="gallery__stats-count gallery__stats-count--developers">0</span>
+                  </li>
+                  <li class="gallery__stats-item">
+                    new photos
+                    <span class="gallery__stats-count gallery__stats-count--photos">0</span>
+                  </li>
+                  <li class="gallery__stats-item">
+                    new photographers
+                    <span class="gallery__stats-count gallery__stats-count--photographers">0</span>
+                  </li>
+                </ul>
+            </div>
+            <div class="gallery__random">
+              <img class="gallery__random-image" width="300" src="/" alt="Unsplash image.">
+              <div class="gallery__random-sign background">
+                <span class="gallery__random-contributor">Bernhard</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="gallery__list">
+          <!-- Container for photos -->
+        </ul>
+      </section>
+      <div class="loader-more"></div>
+    </main>
+
+    <template id="photo">
+      <li class="gallery__item">
+        <img class="gallery__image" width="420" height="700" src="/"
+        alt="Unsplash image.">
+        <div class="gallery__sign background">
+          <div class="gallery__contributor">
+            <img class="gallery__contributor-img" width="32" height="32" src="/" alt="Contributor's avatar.">
+            <span class="gallery__contributor-name"></span>
+          </div>
+          <button class="gallery__button-download button-shadow" type="button">
+            <span class="visually-hidden">Download image.</span>
+          </button>
+        </div>
+      </li>
+    </template>
+
+    <div class="modal">
+      <div class="modal__wrapper">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+          <button class="modal__control" type="button" aria-label="Close popup."></button>
+          <div class="modal__contributor">
+            <img class="modal__contributor-img" width="32" height="32" src="/" alt="Contributor's avatar.">
+            <span class="modal__contributor-name"></span>
+          </div>
+          <div class="modal__image-box">
+            <img class="modal__image" height="700" src="/" alt="Unsplash image.">
+          </div>
+          <div class="modal__statistics-box">
+            <div class="modal__statistics-wrapper">
+              <span class="modal__statistics-title">Views</span>
+              <span class="modal__statistics-count count-views">0</span>
+            </div>
+            <div class="modal__statistics-wrapper">
+              <span class="modal__statistics-title">Likes</span>
+              <span class="modal__statistics-count count-likes">0</span>
+            </div>
+            <div class="modal__statistics-wrapper">
+              <span class="modal__statistics-title">Downloads</span>
+              <span class="modal__statistics-count count-downloads">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/index.js"></script>
+  </body>
+</html>
