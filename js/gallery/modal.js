@@ -50,7 +50,9 @@ const renderModal = async (photo) => {
   try {
     const url = `${BASIC_URL}photos/${photo.id}/statistics?client_id=${ACCESS_KEY}`;
     const response = await fetch(url);
-    if (!response.ok) throw new Error(response.status);
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
     statistics = await response.json();
   } catch (error) {
     showError(error, main);

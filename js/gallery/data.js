@@ -33,7 +33,9 @@ const hideInputResetButton = () => input.classList.remove('is-full');
 const getStatsData = async () => {
   try {
     const responseStats = await fetch(GET_STATS_URL);
-    if (!responseStats.ok) throw new Error(responseStats.status);
+    if (!responseStats.ok) {
+      throw new Error(responseStats.status);
+    }
     stats = await responseStats.json();
   } catch (error) {
     showError(error, main);
@@ -53,11 +55,15 @@ const getGalleryData = async () => {
 
   try {
     const responseRandom = await fetch(fetchRandomURL);
-    if (!responseRandom.ok) throw new Error(responseRandom.status);
+    if (!responseRandom.ok) {
+      throw new Error(responseRandom.status);
+    }
     random = await responseRandom.json();
 
     const responseData = await fetch(fetchDataURL);
-    if (!responseData.ok) throw new Error(responseData.status);
+    if (!responseData.ok) {
+      throw new Error(responseData.status);
+    }
     data = await responseData.json();
   } catch (error) {
     showError(error, main);
@@ -88,7 +94,9 @@ const loadMore = async () => {
 
   try {
     const responseMoreData = await fetch(fetchMoreDataURL);
-    if (!responseMoreData.ok) throw new Error(responseMoreData.status);
+    if (!responseMoreData.ok) {
+      throw new Error(responseMoreData.status);
+    }
     nextPageData = await responseMoreData.json();
 
     if (Object.keys(nextPageData).length) {
