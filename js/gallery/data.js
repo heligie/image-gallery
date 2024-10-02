@@ -9,6 +9,7 @@ const GET_STATS_URL = `${BASIC_URL}stats/month?client_id=${ACCESS_KEY}`;
 const main = document.querySelector('.main');
 const logo = document.querySelector('.header__logo');
 const input = document.querySelector('.header__search-input');
+const searchButton = document.querySelector('.header__search-button');
 const resetButton = document.querySelector('.header__search-reset');
 const reloadButton = document.querySelector('.error__reload');
 const container = document.querySelector('.gallery__list');
@@ -74,7 +75,7 @@ const getGalleryData = async () => {
   setTimeout(() => hideLoadingState(), DELAY);
 };
 
-const loadMore = async () => {
+const loadMoreData = async () => {
   addNoScroll();
 
   currentPage++;
@@ -112,26 +113,36 @@ const loadMore = async () => {
   removeNoScroll();
 };
 
+const loadNewData = () => {
+  showLoadingState();
+  resetLastGalleryValues();
+  getGalleryData();
+};
+
+const resetLastGalleryValues = () => {
+  main.classList.remove('is-error');
+  container.innerHTML = '';
+  fetchMoreDataURL = '';
+  currentPage = 1;
+  nextPageData = {};
+};
+
 const logoClickHandler = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
 const inputKeyupHandler = (evt) => {
   evt.target.value ? showInputResetButton() : hideInputResetButton();
+  inputValue = evt.target.value;
 
   if (evt.key === 'Enter' && evt.target.value) {
-    main.classList.remove('is-error');
-    showLoadingState();
-    container.innerHTML = '';
-    fetchMoreDataURL = '';
-    inputValue = evt.target.value;
-    input.value = inputValue;
-    currentPage = 1;
-    nextPageData = {};
-    getGalleryData();
+    loadNewData();
   }
 };
 
+const searchButtonClickHandler = () => loadNewData();
+
 const resetButtonClickHandler = () => {
   input.value = '';
+  inputValue = '';
   hideInputResetButton();
 };
 
@@ -142,7 +153,7 @@ const windowScrollHandler = () => {
 
   if (scrollTop + clientHeight >= scrollHeight) {
     showMoreLoader();
-    loadMore();
+    loadMoreData();
   }
 };
 
@@ -152,6 +163,7 @@ const setEventHandlers = () => {
   logo.addEventListener('click', logoClickHandler);
   input.addEventListener('keyup', inputKeyupHandler);
   resetButton.addEventListener('click', resetButtonClickHandler);
+  searchButton.addEventListener('click', searchButtonClickHandler);
   window.addEventListener('scroll', windowScrollHandler);
   reloadButton.addEventListener('click', reloadButtonClickHandler);
 };
