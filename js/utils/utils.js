@@ -4,6 +4,8 @@ const body = document.body;
 const errorStatus = document.querySelector('.error__status');
 const errorDescription = document.querySelector('.error__description');
 
+const isEnterKey = (evt) => evt.key === 'Enter';
+
 const convertToSlugs = (string) => string.toLowerCase().replace(' ', '-');
 
 const divideIntoDigitPlace = (digit) => digit.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -19,6 +21,7 @@ const addNoScroll = () => body.classList.add('no-scroll');
 const removeNoScroll = () => body.classList.remove('no-scroll');
 
 export {
+  isEnterKey,
   convertToSlugs,
   divideIntoDigitPlace,
   showError,

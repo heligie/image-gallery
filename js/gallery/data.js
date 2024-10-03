@@ -1,5 +1,5 @@
 import { BASIC_URL, ACCESS_KEY, DEFAULT_REQUEST, DEFAULT_PAGE, PER_PAGE, DELAY } from '../utils/const.js';
-import { showError, addNoScroll, removeNoScroll } from '../utils/utils.js';
+import { isEnterKey, showError, addNoScroll, removeNoScroll } from '../utils/utils.js';
 import { renderPhotos } from './photos.js';
 import { renderRandomPhoto } from './random.js';
 import { renderStats } from './stats.js';
@@ -133,12 +133,16 @@ const inputKeyupHandler = (evt) => {
   evt.target.value ? showInputResetButton() : hideInputResetButton();
   inputValue = evt.target.value;
 
-  if (evt.key === 'Enter' && evt.target.value) {
+  if (isEnterKey(evt) && inputValue) {
     loadNewData();
   }
 };
 
-const searchButtonClickHandler = () => loadNewData();
+const searchButtonClickHandler = () => {
+  if (inputValue) {
+    loadNewData();
+  }
+};
 
 const resetButtonClickHandler = () => {
   input.value = '';
