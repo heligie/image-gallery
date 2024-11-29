@@ -89,9 +89,6 @@
             <img class="gallery__contributor-img" width="32" height="32" src="/" alt="Contributor's avatar.">
             <span class="gallery__contributor-name"></span>
           </div>
-          <button class="gallery__button-download button-shadow" type="button">
-            <span class="visually-hidden">Download image.</span>
-          </button>
         </div>
       </li>
     </template>
@@ -101,9 +98,14 @@
         <div class="modal__overlay"></div>
         <div class="modal__content">
           <button class="modal__control" type="button" aria-label="Close popup."></button>
-          <div class="modal__contributor">
-            <img class="modal__contributor-img" width="32" height="32" src="/" alt="Contributor's avatar.">
-            <span class="modal__contributor-name"></span>
+          <div class="modal__header">
+            <div class="modal__contributor">
+              <img class="modal__contributor-img" width="32" height="32" src="/" alt="Contributor's avatar.">
+              <span class="modal__contributor-name"></span>
+            </div>
+            <button class="modal__button-download button-shadow" type="button">
+              <span class="visually-hidden">Download image.</span>
+            </button>
           </div>
           <div class="modal__image-box">
             <img class="modal__image" height="700" src="/" alt="Unsplash image.">

@@ -1,5 +1,7 @@
 import { BASIC_URL, ACCESS_KEY } from '../utils/const.js';
 import { showError, divideIntoDigitPlace, addNoScroll, removeNoScroll } from '../utils/utils.js';
+import { downloadPhoto } from '../server/api.js';
+import { convertToSlugs } from '../utils/utils.js';
 
 const main = document.querySelector('.main');
 const modalContainer = document.querySelector('.modal');
@@ -11,14 +13,19 @@ const contributor = document.querySelector('.modal__contributor-name');
 const views = document.querySelector('.count-views');
 const likes = document.querySelector('.count-likes');
 const downloads = document.querySelector('.count-downloads');
+const downloadButton = document.querySelector('.modal__button-download');
 
 let statistics;
 
 const fillPopupInfo = (photo) => {
+  const filename = `${convertToSlugs(photo.user.name)}-${photo.user.id}-unsplash`;
   img.src = photo.urls.regular;
   img.alt = photo.alt_description;
   contributor.textContent = photo.user.name;
   avatar.src = photo.user.profile_image.medium;
+  downloadButton.addEventListener('click', () => {
+    downloadPhoto(photo.urls.full, filename);
+  });
   views.textContent = divideIntoDigitPlace(statistics.views.total);
   likes.textContent = divideIntoDigitPlace(statistics.likes.total);
   downloads.textContent = divideIntoDigitPlace(statistics.downloads.total);

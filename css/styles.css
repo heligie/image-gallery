@@ -390,41 +390,6 @@ img {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
 }
 
-.gallery__button-download {
-  position: relative;
-
-  width: 40px;
-  height: 32px;
-
-  background: linear-gradient(180deg, transparent 50%, rgba(10, 20, 30, 0.06)), hsla(0, 0%, 96%, 0.98);
-  border: 1px solid transparent;
-  border-radius: 6px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-
-.gallery__button-download::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  width: 20px;
-  height: 20px;
-
-  background-image: url("../assets/svg/arrow-down.svg");
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  transform: translate(-50%, -50%);
-}
-
-.gallery__button-download:hover {
-  background: linear-gradient(180deg, transparent 50%, rgba(10, 20, 30, 0.06)), var(--white);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.2);
-
-  transition-duration: 1s;
-}
-
 .error {
   display: none;
 }
@@ -688,8 +653,14 @@ img {
   cursor: pointer;
 }
 
-.modal__contributor {
+.modal__header {
+  display: flex;
+  justify-content: space-between;
   padding: 10px;
+}
+
+.modal__contributor {
+  display: flex;
 }
 
 .modal__contributor-name {
@@ -732,6 +703,42 @@ img {
 .modal__statistics-count {
   font-weight: 800;
   font-size: 16px;
+}
+
+.modal__button-download {
+  position: relative;
+
+  width: 40px;
+  height: 32px;
+
+  background: linear-gradient(180deg, transparent 50%, rgba(10, 20, 30, 0.06)), hsla(0, 0%, 96%, 0.98);
+  border: 1px solid var(--nero);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.modal__button-download::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 20px;
+  height: 20px;
+
+  background-image: url("../assets/svg/arrow-down.svg");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  transform: translate(-50%, -50%);
+}
+
+.modal__button-download:hover {
+  background: linear-gradient(180deg, transparent 50%, rgba(10, 20, 30, 0.06)), var(--white);
+  border-color: transparent;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  transition-duration: 1s;
 }
 
 @media (max-width: 985px) {
