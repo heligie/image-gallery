@@ -6,7 +6,7 @@ It fetches and displays images from Unsplash based on the user's search query. T
 
 <img width="869" alt="Devices Mockup." src="/assets/preview/modal-preview.png">
 
-User may get the image with a download button on hover to the thumbnail or open a modal window with additional image information after clicking on the thumbnail.
+User may open a modal window with additional image information after clicking on the thumbnail and get the image with a download button.
 
 ### Technologies
 
